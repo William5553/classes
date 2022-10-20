@@ -1,45 +1,40 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.value = value
         self.next = None
 
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    def insertStart(self, data):
-        newNode = Node(data)
+    def insertStart(self, value):
+        newNode = Node(value)
         newNode.next = self.head
         self.head = newNode
     
-    def insertEnd(self, data):
-        newNode = Node(data)
+    def insertEnd(self, value):
+        newNode = Node(value)
         current = self.head
         while current.next:
             current = current.next
         current.next = newNode
 
-    def find(self, data):
+    def find(self, value):
         current = self.head
         while current:
-            if current.data == data:
+            if current.value == value:
                 return current
             current = current.next
         return None
     
-    def delete(self, data): 
+    def delete(self, index):
+        if index == 0:
+            self.head = self.head.next
+            return
         current = self.head
-        previous = None
-        while current:
-            if current.data == data:
-                if previous:
-                    previous.next = current.next
-                else:
-                    self.head = current.next
-                return current
-            previous = current
+        for i in range(index - 1):
             current = current.next
-        return None
+        current.next = current.next.next
 
     def __len__(self):
         count = 0

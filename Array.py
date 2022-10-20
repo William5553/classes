@@ -3,12 +3,14 @@ class Array:
       self._size = size
       self._items = [None] * size
 
+    # find the first occurence of a value in the array
     def find(self, value):
       for i in range(len(self._items)):
         if self._items[i] == value:
           return i
       return -1
 
+    # deletes an item at an index
     def delete(self, index):
       if index < 0 or index >= self._size:
         raise Exception("Index out of bounds")
