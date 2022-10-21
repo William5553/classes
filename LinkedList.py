@@ -9,15 +9,19 @@ class LinkedList:
 
     def insertStart(self, value):
         newNode = Node(value)
-        newNode.next = self.head
+        if self.head:
+          newNode.next = self.head
         self.head = newNode
     
     def insertEnd(self, value):
         newNode = Node(value)
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = newNode
+        if self.head:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = newNode
+        else:
+            self.head = newNode
 
     def find(self, value):
         current = self.head
@@ -43,3 +47,12 @@ class LinkedList:
             count += 1
             current = current.next
         return count
+    
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
+
+    def __str__(self):
+        return "(" + " -> ".join(map(str, self)) + ")"
