@@ -2,6 +2,18 @@ class Array:
     def __init__(self, size):
       self._size = size
       self._items = [None] * size
+    
+    # insert at a given index and shift all other items
+    def insert(self, index, value):
+      if index >= self._size or index < 0:
+        raise Exception("Index out of bounds")
+      if self._items[index] == None:
+        self._items[index] = value
+      else:
+        first = self._items[:index]
+        second = self._items[index:]
+        self._items = first + [value] + second
+        self._size += 1
 
     # find the first occurence of a value in the array
     def find(self, value):

@@ -23,6 +23,16 @@ class LinkedList:
         else:
             self.head = newNode
 
+    def insert(self, index, value):
+        if index == 0:
+            return self.insertStart(value)
+        current = self.head
+        for i in range(index - 1):
+            current = current.next
+        newNode = Node(value)
+        newNode.next = current.next
+        current.next = newNode
+
     def find(self, value):
         current = self.head
         while current:
