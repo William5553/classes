@@ -6,7 +6,7 @@ class Stack:
     def push(self, item):
         self.items = [item] + self.items
     
-    # returns the top item on the stack and removes it
+    # returns the top item on the stack and removes it (i = -1)
     def pop(self):
         top = self.items[0]
         self.items = self.items[1:]
